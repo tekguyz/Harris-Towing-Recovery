@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+@theme {
+  --color-sky-rescue: oklch(75% 0.12 230);
+  --color-espresso-pro: oklch(25% 0.04 45);
+  --color-road-mist: oklch(97% 0.01 240);
+  --font-sans: var(--font-quicksand), ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  body {
+    @apply font-sans text-espresso-pro bg-white;
+  }
+}
