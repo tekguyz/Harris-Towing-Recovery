@@ -15,13 +15,12 @@ export default function ContactForm() {
     const formData = new FormData(e.currentTarget);
 
     try {
-      const response = await fetch("/", {
+      const response = await fetch("/forms.html", {
         method: "POST",
         headers: { 
-          "Content-Type": "application/x-www-form-urlencoded",
           "X-Requested-With": "XMLHttpRequest" 
         },
-        body: new URLSearchParams(formData as any).toString(),
+        body: formData,
       });
 
       if (response.ok) {
@@ -106,11 +105,17 @@ export default function ContactForm() {
               <form 
                 name="harris-contact" 
                 method="POST" 
+                action="/forms.html"
                 data-netlify="true" 
+                netlify-honeypot="bot-field"
+                encType="multipart/form-data"
                 onSubmit={handleSubmit}
                 className="space-y-5"
               >
                 <input type="hidden" name="form-name" value="harris-contact" />
+                <p className="hidden">
+                  <label>Don&apos;t fill this out if you&apos;re human: <input name="bot-field" /></label>
+                </p>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                   <div className="space-y-2">
